@@ -35,6 +35,9 @@ public class lotteryApplication {
             default -> throw new IllegalArgumentException("Número inválido. Por favor digite 1 ou 2 para escolher o " +
                     "tipo do jogo");
         }
+        System.out.println("Digite o número do concurso (Número de concurso incorreto poderá afetar o resultado): ");
+        int lotteryNumber = input.nextInt();
+        dto.setLotteryNumber(lotteryNumber);
         System.out.println("Digite a quantidade de números a serem gerados por jogo: ");
         int numbersOfGame = input.nextInt();
         System.out.println("Digite a quantidade de jogos a serem gerados: ");
@@ -57,11 +60,17 @@ public class lotteryApplication {
             case 1 -> {
                 System.out.println("Digite o e-mail que deseja receber o(s) resultado(s): ");
                 String email = input.next();
-                dto.setEmail(email);
-                new SendNotificationResult().send(dto);
+                if (email != null) {
+                    dto.setEmail(email);
+                    new SendNotificationResult().send(dto);
+                } else {
+                    throw new IllegalArgumentException("Opção inválida. Jogo seguirá sem acompanhamento");
+                }
             }
             case 2 -> System.out.println("Obrigado!");
             default -> throw new IllegalArgumentException("Opção inválida. Jogo seguirá sem acompanhamento");
         }
+
+        System.out.println();
     }
 }

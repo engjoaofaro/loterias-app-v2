@@ -10,6 +10,12 @@ public class GameDto {
     protected List<ArrayList<Integer>> games;
     protected String voucher;
 
+    protected Integer lotteryNumber;
+
+    public void setLotteryNumber(Integer lotteryNumber) {
+        this.lotteryNumber = lotteryNumber;
+    }
+
     public void setGameType(int gameType) {
         this.gameType = gameType;
     }
