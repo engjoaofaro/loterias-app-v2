@@ -8,6 +8,7 @@ import br.eng.joaofaro.service.impl.Lotomania;
 import br.eng.joaofaro.service.impl.Megasena;
 import br.eng.joaofaro.util.VoucherGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,7 +41,7 @@ public class lotteryApplication {
         int quantity = input.nextInt();
 
         GameCalculator gameCalculator = new GameCalculator();
-        List<Integer> games = gameCalculator.calculate(quantity, numbersOfGame, gameType);
+        List<ArrayList<Integer>> games = gameCalculator.calculate(quantity, numbersOfGame, gameType);
         dto.setGames(games);
         if (games != null) {
             String voucher = new VoucherGenerator().generator();

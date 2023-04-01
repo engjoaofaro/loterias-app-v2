@@ -8,13 +8,13 @@ import java.util.Random;
 public abstract class Game {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
-    public List<Integer> gameGenerator(int quantity, int typeOfGame, int numbersOfGame) {
+    public List<ArrayList<Integer>> gameGenerator(int quantity, int typeOfGame, int numbersOfGame) {
         System.out.println("Gerando "+quantity+" jogos...");
         System.out.println();
-        List<Integer> games = null;
+        List<ArrayList<Integer>> gamesResturn = new ArrayList<>();
 
         for (int i = 0; i < quantity; i++) {
-            games = new ArrayList<>();
+            ArrayList<Integer> games = new ArrayList<>();
             Random randomGames = new Random();
 
             for (int j = 0; j < numbersOfGame; j++) {
@@ -30,10 +30,11 @@ public abstract class Game {
             int gameIndex = i + 1;
             Collections.sort(games);
             System.out.println("Jogo "+ gameIndex+ ": "+ games);
+            gamesResturn.add(games);
         }
-        return games;
+        return gamesResturn;
     }
 
-    protected abstract List<Integer> generator(int quantity, int numbersOfGame);
+    protected abstract List<ArrayList<Integer>> generator(int quantity, int numbersOfGame);
     protected abstract Boolean canPlayGame(int minNumberOfGame);
 }
