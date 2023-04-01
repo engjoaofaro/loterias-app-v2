@@ -6,6 +6,7 @@ import br.eng.joaofaro.service.SendNotificationResult;
 import br.eng.joaofaro.service.impl.LotoFacil;
 import br.eng.joaofaro.service.impl.Lotomania;
 import br.eng.joaofaro.service.impl.Megasena;
+import br.eng.joaofaro.util.EmailSubscribeNotification;
 import br.eng.joaofaro.util.VoucherGenerator;
 
 import java.util.ArrayList;
@@ -60,6 +61,7 @@ public class lotteryApplication {
             case 1 -> {
                 System.out.println("Digite o e-mail que deseja receber o(s) resultado(s): ");
                 String email = input.next();
+                EmailSubscribeNotification.notifier();
                 if (email != null) {
                     dto.setEmail(email);
                     new SendNotificationResult().send(dto);
