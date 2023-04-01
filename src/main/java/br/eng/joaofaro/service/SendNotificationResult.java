@@ -24,6 +24,7 @@ public class SendNotificationResult {
                 .withMessageBody(lottery)
                 .withDelaySeconds(30);
         sqs.sendMessage(request);
+        System.out.println();
         System.out.println("Aguarde resultado por e-mail. Obrigado");
         System.out.println();
     }
