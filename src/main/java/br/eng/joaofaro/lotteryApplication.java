@@ -2,10 +2,13 @@ package br.eng.joaofaro;
 
 import br.eng.joaofaro.service.Game;
 import br.eng.joaofaro.service.GameCalculator;
+import br.eng.joaofaro.service.SendNotificationResult;
 import br.eng.joaofaro.service.impl.LotoFacil;
 import br.eng.joaofaro.service.impl.Lotomania;
 import br.eng.joaofaro.service.impl.Megasena;
+import br.eng.joaofaro.util.VoucherGenerator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class lotteryApplication {
@@ -16,11 +19,13 @@ public class lotteryApplication {
 
     public static void main(String[] args) {
         Game gameType;
+        GameDto dto = new GameDto();
         System.out.println("#### ATUALMENTE SOMENTE JOGOS DA MEGASENA, LOTOFACIL E LOTOMANIA ESTÃO DISPONÍVEIS ####");
         System.out.println();
         Scanner input = new Scanner(System.in);
         System.out.println("Digite 1 para Megasena, 2 para Lotofácil ou 3 para LotoMania: ");
         int game = input.nextInt();
+        dto.setGameType(game);
 
         switch (game) {
             case MEGASENA -> gameType = new Megasena();
@@ -35,11 +40,27 @@ public class lotteryApplication {
         int quantity = input.nextInt();
 
         GameCalculator gameCalculator = new GameCalculator();
-        String voucher = gameCalculator.calculate(quantity, numbersOfGame, gameType);
-        if (voucher != null) {
+        List<Integer> games = gameCalculator.calculate(quantity, numbersOfGame, gameType);
+        dto.setGames(games);
+        if (games != null) {
+            String voucher = new VoucherGenerator().generator();
             System.out.println();
             System.out.println("ID da transação: "+ voucher);
             System.out.println();
+            dto.setVoucher(voucher);
+        }
+        System.out.println("Deseja acompanhar o resultado? (1) Sim ou (2) Não");
+        int resultado = input.nextInt();
+
+        switch (resultado) {
+            case 1 -> {
+                System.out.println("Digite o e-mail que deseja receber o(s) resultado(s): ");
+                String email = input.next();
+                dto.setEmail(email);
+                new SendNotificationResult().send(dto);
+            }
+            case 2 -> System.out.println("Obrigado!");
+            default -> throw new IllegalArgumentException("Opção inválida. Jogo seguirá sem acompanhamento");
         }
     }
 }

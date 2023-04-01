@@ -1,20 +1,20 @@
 package br.eng.joaofaro.service;
 
-import br.eng.joaofaro.util.VoucherGenerator;
-
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Game {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
-    public String gameGenerator(int quantity, int typeOfGame, int numbersOfGame) {
+    public List<Integer> gameGenerator(int quantity, int typeOfGame, int numbersOfGame) {
         System.out.println("Gerando "+quantity+" jogos...");
         System.out.println();
+        List<Integer> games = null;
 
         for (int i = 0; i < quantity; i++) {
-            ArrayList<Integer> games = new ArrayList<>();
+            games = new ArrayList<>();
             Random randomGames = new Random();
 
             for (int j = 0; j < numbersOfGame; j++) {
@@ -31,9 +31,9 @@ public abstract class Game {
             Collections.sort(games);
             System.out.println("Jogo "+ gameIndex+ ": "+ games);
         }
-        return new VoucherGenerator().generator();
+        return games;
     }
 
-    protected abstract String generator(int quantity, int numbersOfGame);
+    protected abstract List<Integer> generator(int quantity, int numbersOfGame);
     protected abstract Boolean canPlayGame(int minNumberOfGame);
 }

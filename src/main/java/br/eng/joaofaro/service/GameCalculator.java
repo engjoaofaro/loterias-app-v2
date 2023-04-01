@@ -1,16 +1,18 @@
 package br.eng.joaofaro.service;
 
+import java.util.List;
+
 public class GameCalculator {
 
-    public String calculate(int quantity, int numbersOfGame, Game game) {
-        String voucher = null;
+    public List<Integer> calculate(int quantity, int numbersOfGame, Game game) {
+        List<Integer> games = null;
         try {
-            voucher = game.generator(quantity, numbersOfGame);
+            games = game.generator(quantity, numbersOfGame);
             System.out.println();
             System.out.println("Jogo(s) gerado(s) com sucesso!");
         } catch (Exception e) {
             System.out.println("Ocorreu um erro ao tentar gerar os jogos: "+ e);
         }
-        return voucher;
+        return games;
     }
 }
