@@ -72,7 +72,5 @@ public class lotteryApplication {
             case 2 -> System.out.println("Obrigado!");
             default -> throw new IllegalArgumentException("Opção inválida. Jogo seguirá sem acompanhamento");
         }
-
-        System.out.println();
     }
 }
