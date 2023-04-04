@@ -7,6 +7,7 @@ import br.eng.joaofaro.service.impl.LotoFacil;
 import br.eng.joaofaro.service.impl.Lotomania;
 import br.eng.joaofaro.service.impl.Megasena;
 import br.eng.joaofaro.util.EmailSubscribeNotification;
+import br.eng.joaofaro.util.ScheduleValidation;
 import br.eng.joaofaro.util.VoucherGenerator;
 
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public class lotteryApplication {
     private static final int LOTOMANIA = 3;
 
     public static void main(String[] args) {
+        System.out.println("Validando horário da aposta...");
+        ScheduleValidation.validate();
+        System.out.println();
         Game gameType;
         GameDto dto = new GameDto();
         System.out.println("#### ATUALMENTE SOMENTE JOGOS DA MEGASENA, LOTOFACIL E LOTOMANIA ESTÃO DISPONÍVEIS ####");
