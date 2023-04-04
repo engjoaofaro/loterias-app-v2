@@ -22,7 +22,7 @@ public class lotteryApplication {
 
     public static void main(String[] args) {
         System.out.println("Validando horário da aposta...");
-        ScheduleValidation.validate();
+        ScheduleValidation.validate(false);
         System.out.println();
         Game gameType;
         GameDto dto = new GameDto();
