@@ -11,7 +11,7 @@ public abstract class Game {
     public List<ArrayList<Integer>> gameGenerator(int quantity, int typeOfGame, int numbersOfGame) {
         System.out.println("Gerando "+quantity+" jogos...");
         System.out.println();
-        List<ArrayList<Integer>> gamesResturn = new ArrayList<>();
+        List<ArrayList<Integer>> gamesReturn = new ArrayList<>();
 
         for (int i = 0; i < quantity; i++) {
             ArrayList<Integer> games = new ArrayList<>();
@@ -30,9 +30,9 @@ public abstract class Game {
             int gameIndex = i + 1;
             Collections.sort(games);
             System.out.println("Jogo "+ gameIndex+ ": "+ games);
-            gamesResturn.add(games);
+            gamesReturn.add(games);
         }
-        return gamesResturn;
+        return gamesReturn;
     }
 
     protected abstract List<ArrayList<Integer>> generator(int quantity, int numbersOfGame);
