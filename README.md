@@ -1,6 +1,10 @@
 ![Badge em Desenvolvimento](https://img.shields.io/badge/status-em%20desenvolvimento-yellowgreen)
 ![Badge License](https://img.shields.io/github/license/engjoaofaro/loterias-app-v2?color=blue)
 ![Badge last commit](https://img.shields.io/github/last-commit/engjoaofaro/loterias-app-v2?color=red)
+
+<h4 align="center"> 
+    :construction:  Projeto em construção  :construction:
+</h4>
 # loterias-app-v2
 Versão 2 do app de simulações de jogos da Loteria (Mega-Sena, Lotofácil, Lotomania).
 
