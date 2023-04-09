@@ -10,6 +10,8 @@ import br.eng.joaofaro.util.EmailSubscribeNotification;
 import br.eng.joaofaro.util.ScheduleValidation;
 import br.eng.joaofaro.util.VoucherGenerator;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,10 +22,25 @@ public class lotteryApplication {
     private static final int LOTOFACIL = 2;
     private static final int LOTOMANIA = 3;
 
-    public static void main(String[] args) {
-        System.out.println("Validando horário da aposta...");
-        ScheduleValidation.validate(false);
-        System.out.println();
+    public static void main(String[] args) throws InterruptedException {
+        JFrame frameValidator = new JFrame("Loterias V2");
+        frameValidator.setSize(500,100);
+        JPanel panelValidator = new JPanel();
+        panelValidator.setSize(100, 100);
+        panelValidator.setLayout(new GridBagLayout());
+
+        JLabel labelScheduleValidation = new JLabel();
+        labelScheduleValidation.setText("Validando horário da aposta...");
+        panelValidator.add(labelScheduleValidation);
+        frameValidator.add(panelValidator);
+        frameValidator.setVisible(true);
+
+        Thread.sleep(3000);
+
+        frameValidator.setVisible(false);
+
+        ScheduleValidation.validate(true);
+
         Game gameType;
         GameDto dto = new GameDto();
         System.out.println("#### ATUALMENTE SOMENTE JOGOS DA MEGASENA, LOTOFACIL E LOTOMANIA ESTÃO DISPONÍVEIS ####");
